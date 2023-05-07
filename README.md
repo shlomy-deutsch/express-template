@@ -10,7 +10,7 @@ config-dev:
 database לשנות את שם ה 
 
 Product-logic: 
-                                                                                                              לשנות את השאילתה עצמה כך שתתאים ל Database שיצרתם 
+                                                                                                              לשנות את השאילתה עצמה כך שתתאים ל Database שיצרתם
 
                                                                                                                                                           הרצה ראשונה:
 npm start
