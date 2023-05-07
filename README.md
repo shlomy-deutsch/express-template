@@ -6,10 +6,10 @@ npm i express-fileupload
 npm I nodemon
 
 קבצים לשינוי:
-config-dev  לשנות את שם ה database
+config-dev : לשנות את שם ה database
 
-Product-logic  
-לשנות את השאילתה עצמה כך שתתאים לdatabase שיצרתם. 
+Product-logic  :
+לשנות את השאילתה עצמה כך שתתאים לדאטאבייס שיצרתם. 
 
 הרצה ראשונה:
 npm start
