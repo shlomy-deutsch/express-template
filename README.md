@@ -7,7 +7,9 @@ npm I nodemon
 
 קבצים לשינוי:
 config-dev  לשנות את שם ה database
-Product-logic  לשנות את השאילתה עצמה כך שתתאים לdatabase שיצרתם. 
+
+Product-logic  
+לשנות את השאילתה עצמה כך שתתאים לdatabase שיצרתם. 
 
 הרצה ראשונה:
 npm start
