@@ -1,4 +1,4 @@
-global.config = require("./config-dev.json");
+global.config = require("./config-prod.json");
 const cors = require("cors"); 
 const express = require("express");
 const fileUpload = require("express-fileupload");
