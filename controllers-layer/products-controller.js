@@ -4,19 +4,6 @@ const express = require("express");
 const logic = require("../business-logic-layer/products-logic");
 const router = express.Router();
 
-router.get("/images/:name", (request, response) => {
-  try {
-    const name = request.params.name;
-    let absolutePath = path.join(__dirname, "..", "images", "products", name);
-    if (!fs.existsSync(absolutePath)) {
-      absolutePath = path.join(__dirname, "..", "images", "not-found.png");
-    }
-    response.sendFile(absolutePath);
-  } catch (err) {
-    response.status(500).send(err.message);
-  }
-});
-//////////////////////////////////////////////////////////////////
 router.get("/", async (request, response) => {
   try {
     const products = await logic.getAllProductsAsync();
@@ -26,14 +13,32 @@ router.get("/", async (request, response) => {
   }
 });
 
+router.get("/brand/:param", async (request, response) => {
+  try {
+    const param = request.params.param;
+
+    const products = await logic.searchProductsAsync(param);
+    response.json(products);
+  } catch (err) {
+    response.status(500).send(err.message);
+  }
+});
+router.get("/variety/:param", async (request, response) => {
+  try {
+    const param = request.params.param;
+
+    const products = await logic.searchVarietyProductsAsync(param);
+    response.json(products);
+  } catch (err) {
+    response.status(500).send(err.message);
+  }
+});
+
 router.post("/", async (request, response) => {
+
   try {
     const product = request.body;
-
-    const image =
-      request.files && request.files.image ? request.files.image : null;
-    if (!image) return response.status(400).send("Missing image.");
-    const addedProduct = await logic.addProductAsync(product, image);
+    const addedProduct = await logic.addProductAsync(product);
     response.status(201).json(addedProduct);
   } catch (err) {
     response.status(500).send(err.message);
@@ -45,10 +50,8 @@ router.put("/:id", async (request, response) => {
     const id = +request.params.id;
     const product = request.body;
     product.id = id;
-    const image =
-      request.files && request.files.image ? request.files.image : null;
-
-    const updateProduct = await logic.updateProductAsync(product, image);
+    
+    const updateProduct = await logic.updateProductAsync(product);
 
     response.status(200).json(updateProduct);
   } catch (err) {

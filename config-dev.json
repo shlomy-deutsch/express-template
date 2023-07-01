@@ -3,6 +3,6 @@
         "host": "localhost",
         "user": "root",
         "password": "",
-        "database": "mispara"
+        "database": "wine"
     }
 }
